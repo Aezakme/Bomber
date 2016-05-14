@@ -9,11 +9,11 @@ import android.widget.TextView;
 public class BombCounter extends Game {
 
     //Счетчик оставшихся бомб
-    static TextView counter;
+    TextView counter;
     //Количество бомб
     int Bombs;
     //Количество бомб, которые определил пользователь
-    int fakeBombs;
+    static int fakeBombs = 0;
     //Activity
     Activity activity;
 
@@ -23,17 +23,19 @@ public class BombCounter extends Game {
         this.activity = activity;
 
         counter = (TextView) activity.findViewById(R.id.bombsCounter);
-        counter.setText(Bombs+"");
+        counter.setText(Bombs + "");
     }
 
     void upFakeBombs() {
+        counter = (TextView) activity.findViewById(R.id.bombsCounter);
         fakeBombs++;
-        counter.setText(fakeBombs);
+        counter.setText(fakeBombs + "");
     }
 
     void downFakeBombs() {
+        counter = (TextView) activity.findViewById(R.id.bombsCounter);
         fakeBombs--;
-        counter.setText(fakeBombs);
+        counter.setText(fakeBombs + "");
     }
 
     public int getFakeBombs() {

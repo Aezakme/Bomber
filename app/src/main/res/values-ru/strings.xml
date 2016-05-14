@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Сапер</string>
-    <string name="about">О программе</string>
+    <string name="about">Инфо</string>
     <string name="settings">Настройки</string>
     <string name="start">Старт</string>
     <string name="game_string">Игра!</string>
