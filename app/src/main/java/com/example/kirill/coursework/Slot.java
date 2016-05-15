@@ -1,7 +1,6 @@
 package com.example.kirill.coursework;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -54,14 +53,11 @@ public class Slot extends Game {
             @Override
             public void onClick(View v) {
                 if (!flagUp) {
-
-                    Log.v("id", slotButton.getId() + "");
                     if (haveBomb) {
                         ImageView view = (ImageView) activity.findViewById(R.id.smile);
                         view.setBackgroundResource(R.drawable.dead);
+
                         Toast.makeText(activity, "Booom!You lose!", Toast.LENGTH_SHORT).show();
-
-
                         vibrator.vibrate(500);
 
                         boomAll();
@@ -144,13 +140,9 @@ public class Slot extends Game {
                     slotButton.setBackgroundResource(R.drawable.eight);
                     break;
                 }
-
-
             }
         }
-        slotButton.setLongClickable(false);
-
-
+        slotButton.setEnabled(false);
     }
 
 

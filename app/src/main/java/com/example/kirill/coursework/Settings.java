@@ -1,11 +1,8 @@
 package com.example.kirill.coursework;
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.NumberPicker;
 
 public class Settings extends AppCompatActivity {
@@ -32,7 +29,7 @@ public class Settings extends AppCompatActivity {
 
         bombNum.setMinValue(1);
         bombNum.setMaxValue(fieldsSize.getValue() - 1);
-        bombNum.setWrapSelectorWheel(false);
+        bombNum.setWrapSelectorWheel(true);
 
         fieldsSize.setValue(size);
         bombNum.setMaxValue((size * size) - 1);
@@ -65,20 +62,5 @@ public class Settings extends AppCompatActivity {
 
     public static int getNumberOfBombs() {
         return numberOfBombs;
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_settings, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_about:
-                startActivity(new Intent(getApplicationContext(), About.class));
-                break;
-
-        }
-        return true;
     }
 }
