@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
 
-    int x = 0;
+/**
+ * Класс для activity_main - запускается первым, содержит меню для перехода
+ * Из названий понятно, что куда идет
+ */
+
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onStartClick(View view) {
         startActivity(new Intent(getApplicationContext(), Game.class));
-
     }
 
     public void onSettingsClick(View view) {
