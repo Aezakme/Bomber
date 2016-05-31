@@ -15,7 +15,9 @@
         android:src="@color/primary_dark_material_dark"
         android:scaleType="fitXY"
         android:layout_alignLeft="@+id/left_corner"
-        android:layout_alignStart="@+id/left_corner" />
+        android:layout_alignStart="@+id/left_corner"
+        tools:ignore="PrivateResource"
+        android:contentDescription="@string/back_description" />
 
     <ImageView
         android:layout_width="25dp"
@@ -92,7 +94,7 @@
     <ImageView
         android:layout_width="25dp"
         android:layout_height="40dp"
-        android:id="@+id/reft_bottom"
+        android:id="@+id/left_bottom"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

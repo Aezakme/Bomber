@@ -4,9 +4,10 @@
     <string name="about">Инфо</string>
     <string name="settings">Настройки</string>
     <string name="start">Старт</string>
-    <string name="game_string">Игра!</string>
-    <string name="score">Счет</string>
     <string name="field_size">Размер поля</string>
     <string name="number_mines">Количество мин</string>
     <string name="About">Курсовая работа Полякова Кирилла\n гр 23501/1</string>
+
+    <string name="back_description" >Безмятежность из Windows XP</string>
+    <string name="makeUgly">Автоповорот экрана</string>
 </resources>

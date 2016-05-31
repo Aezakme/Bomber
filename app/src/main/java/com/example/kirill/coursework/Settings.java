@@ -3,7 +3,9 @@ package com.example.kirill.coursework;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CompoundButton;
 import android.widget.NumberPicker;
+import android.widget.Switch;
 
 /**
  * Activity настроек. На нем находятся два слайдера кол-во клеток и мин
@@ -12,14 +14,14 @@ import android.widget.NumberPicker;
 public class Settings extends AppCompatActivity {
 
     //Размер поля
-    static int size = 5;
+    private static int size = 5;
     //Кол-во мин
-    static int numberOfBombs = 5;
+    private static int numberOfBombs = 5;
+    //Автоповорот экрана
+    private static boolean isUgly = false;
 
     //Слайдер для изменение размера поля
-    NumberPicker fieldsSize = null;
-    //Слайдер для изменение размера поля
-    NumberPicker bombNum = null;
+    private NumberPicker bombNum = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,9 @@ public class Settings extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Инициализация слайдеров
-        fieldsSize = (NumberPicker) findViewById(R.id.numberPicker1);
+        NumberPicker fieldsSize = (NumberPicker) findViewById(R.id.numberPicker1);
         bombNum = (NumberPicker) findViewById(R.id.numberPicker2);
+        Switch switcher = (Switch) findViewById(R.id.switch1);
 
         //Кол-во клеток фиксирована (от 5 до 10) иначе кнопки слишком маленькие
         fieldsSize.setMinValue(5);
@@ -48,6 +51,7 @@ public class Settings extends AppCompatActivity {
         fieldsSize.setValue(size);
         bombNum.setMaxValue((size * size) - 1);
         bombNum.setValue(numberOfBombs);
+        switcher.setChecked(isUgly);
 
         //Слушатель изменений размеров слайдера с размером поля
         NumberPicker.OnValueChangeListener OnValueChangeListenerNumberPicker1 = new NumberPicker.OnValueChangeListener() {
@@ -73,14 +77,28 @@ public class Settings extends AppCompatActivity {
         //Привязка слушателей на слайдеры
         fieldsSize.setOnValueChangedListener(OnValueChangeListenerNumberPicker1);
         bombNum.setOnValueChangedListener(OnValueChangeListenerNumberPicker2);
+
+        switcher.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isUgly = isChecked;
+            }
+        });
     }
+
 
     //Геттер размера
     public static int getSize() {
         return size;
     }
+
     //Геттер кол-ва бомб
     public static int getNumberOfBombs() {
         return numberOfBombs;
+    }
+
+    //Геттер флага автоповорота
+    public static boolean isUgly() {
+        return !isUgly;
     }
 }

@@ -7,13 +7,13 @@ import android.view.View;
 import android.widget.ImageButton;
 
 /**
- * Activty с инфой обо мне и проекте, так же тут спряталсь пасхалочка
+ * Activity с инфой обо мне и проекте, так же тут спряталсь пасхалочка
  */
 
 public class About extends AppCompatActivity {
 
     //Кол-во нажатий на кнопку
-    int count;
+    private int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class About extends AppCompatActivity {
     }
 
     //Метод от ImageView (5 раз нажать сменится background)
+    @SuppressWarnings({"unused", "UnusedParameters"})
     public void startHint(View view) {
         count++;
         if (count > 4) {

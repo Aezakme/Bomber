@@ -7,20 +7,16 @@ import android.widget.ImageView;
  * Класс счетчика мин, содержит 3 ImageView, по одному на каждые разряд счетчика
  * Кол-во мин делится на разряды и устанавливается в счетчик
  */
-public class BombCounter extends Game {
+class BombCounter {
 
     //Разряд сотен
-    static ImageView first;
+    private static ImageView first;
     //Разряд десятков
-    static ImageView second;
+    private static ImageView second;
     //Разряд единиц
-    static ImageView third;
-
-    //Activity в котором счетчик находится
-    Activity activity;
+    private static ImageView third;
 
     public BombCounter(int Bombs, Activity activity) {
-        this.activity = activity;
 
         //Инициалиация ImageView
         first = (ImageView) activity.findViewById(R.id.first);
@@ -61,9 +57,9 @@ public class BombCounter extends Game {
             two *= -1;
             //Вывод
             changeNumber(two, second);
-
             //Получение единиц
             int three = value % 10;
+
             //Инвертирование значения (т.к при деление, получилось отрицательное значение)
             three *= -1;
             //Вывод
@@ -73,7 +69,7 @@ public class BombCounter extends Game {
     }
 
     //Метод вывода значения цифры, входные параметры: цифра и в какой слот вставить цифру
-    protected void changeNumber(int value, ImageView imageView) {
+    private void changeNumber(int value, ImageView imageView) {
         //Каждой цифре привязана соответствующая картинка слота
         switch (value) {
             case 0: {

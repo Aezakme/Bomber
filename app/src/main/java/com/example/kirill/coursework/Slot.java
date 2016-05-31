@@ -1,6 +1,8 @@
 package com.example.kirill.coursework;
 
 import android.app.Activity;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -10,10 +12,11 @@ import android.widget.Toast;
 /**
  * Класс слота с миной
  */
-public class Slot extends Game {
+@SuppressWarnings("ALL")
+public class Slot extends Game implements Parcelable {
 
     //Кнопка слота
-    ImageButton slotButton;
+    transient ImageButton slotButton;
     //ID слота
     int id;
     //Количество мин вокруг
@@ -58,9 +61,7 @@ public class Slot extends Game {
                 if (!flagUp) {
                     //Если есть мина - взрыв!
                     if (haveBomb) {
-                        //Смайлик умирает
-                        ImageView view = (ImageView) activity.findViewById(R.id.smile);
-                        view.setBackgroundResource(R.drawable.dead);
+
 
                         //Напоминание, какоой игрок неудачник
                         Toast.makeText(activity, "Booom!You lose!", Toast.LENGTH_SHORT).show();
@@ -109,6 +110,7 @@ public class Slot extends Game {
     //Метод открытия слота
     void open() {
 
+
         //Слот открыт
         showed = true;
         //Если в слоте бомба - она показыватся,  иначе устнавливается картинка в соответсвии со счетчиком мин
@@ -121,6 +123,16 @@ public class Slot extends Game {
                 //Если рядом нет мин, открывются соседние клетки
                 case 0: {
                     slotButton.setBackgroundResource(R.drawable.zero);
+
+                    if (flagUp) {
+                        //Если мина есть, увеличиваются оба счетчика, если нет, только счетчик фейков
+                        if (haveBomb) {
+                            upBombs(true);
+                        } else {
+                            upBombs(false);
+                        }
+                        flagUp = false;
+                    }
                     openNear(slotButton.getId());
                     break;
                 }
@@ -157,6 +169,7 @@ public class Slot extends Game {
                     break;
                 }
             }
+
         }
         slotButton.setEnabled(false);
     }
@@ -171,14 +184,17 @@ public class Slot extends Game {
     public void setCount(int count) {
         this.count = count;
     }
+
     //Сеттер флажка
     public void setFlagUp(boolean flagUp) {
         this.flagUp = flagUp;
     }
+
     //Сеттер нахождения мины в данном слоте
     public void setHaveBomb(boolean haveBomb) {
         this.haveBomb = haveBomb;
     }
+
     //Сеттер переменной открытия слота
     public void setShowed(boolean showed) {
         this.showed = showed;
@@ -188,12 +204,24 @@ public class Slot extends Game {
     public ImageButton getSlotButton() {
         return slotButton;
     }
+
     //Геттер id
     public int getId() {
         return id;
     }
+
     //Геттер переменной открытия слота
-    public boolean isShowed() {
-        return showed;
+    public boolean isNoShowed() {
+        return !showed;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }
