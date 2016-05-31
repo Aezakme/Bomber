@@ -1,4 +1,4 @@
-package com.example.kirill.coursework;
+Ipackage com.example.kirill.coursework;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -233,7 +233,7 @@ public class Game extends AppCompatActivity {
 
     //Повышение счетчика мин
     //Флаг показывает, верно ли выставлен флаг
-    void upBombs(boolean good) {
+    static void upBombs(boolean good) {
 
         //Если правильно - повышается счетчик правильных мин
         if (good) {
@@ -253,7 +253,7 @@ public class Game extends AppCompatActivity {
 
     //Понижение счетчика мин
     //Флаг показывает, верно ли выставлен флаг
-    void downBombs(boolean good) {
+    static void downBombs(boolean good) {
         //Если правильно - понижается счетчик правильных мин
         if (good) {
             goodBombs--;
@@ -366,7 +366,7 @@ public class Game extends AppCompatActivity {
     }
 
     //Метод, который в случае проигрыша подрывает все мины
-    void boomAll() {
+    static void boomAll() {
 
         //Смайлик умирает
         button.setBackgroundResource(R.drawable.dead);
@@ -391,7 +391,7 @@ public class Game extends AppCompatActivity {
     }
 
     //Метод, который открывает слот и если он пустой, то его соседей
-    void openNear(int id) {
+    static void openNear(int id) {
 
         if (id % FIELD_COLUMNS != 0) {
             if (slotArray.get(id - 1).isNoShowed())
@@ -435,7 +435,7 @@ public class Game extends AppCompatActivity {
     }
 
     //Вызывается, когда открыли новую клетку без мины
-    void oneMoreOpen() {
+    static void oneMoreOpen() {
         //Уменьшаем значение счетчика закрытых слотов
         closeCounter--;
         //Если счетчик равен 0, а кол-во флажков неотрицатеьно - победа!
@@ -451,7 +451,7 @@ public class Game extends AppCompatActivity {
     }
 
     //Метод выигрыша, на всех слотах с минами ставит флажки и блокирует их
-    private void win() {
+    private static void win() {
         button.setBackgroundResource(R.drawable.win);
         stateOfSmile = 1;
         for (int i = 0; i < FIELD_ROWS; i++) {

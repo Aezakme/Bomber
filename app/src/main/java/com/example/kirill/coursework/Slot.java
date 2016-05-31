@@ -13,7 +13,7 @@ import android.widget.Toast;
  * Класс слота с миной
  */
 @SuppressWarnings("ALL")
-public class Slot extends Game implements Parcelable {
+public class Slot implements Parcelable {
 
     //Кнопка слота
     transient ImageButton slotButton;
@@ -66,9 +66,9 @@ public class Slot extends Game implements Parcelable {
                         //Напоминание, какоой игрок неудачник
                         Toast.makeText(activity, "Booom!You lose!", Toast.LENGTH_SHORT).show();
                         //Вибрация
-                        vibrator.vibrate(500);
+                        Game.vibrator.vibrate(500);
                         //Подрыв всех мин
-                        boomAll();
+                        Game.boomAll();
                     } else {
                         //открытие клетки
                         open();
@@ -86,18 +86,18 @@ public class Slot extends Game implements Parcelable {
                     slotButton.setBackgroundResource(R.drawable.slot);
                     //Если мина есть, увеличиваются оба счетчика, если нет, только счетчик фейков
                     if (haveBomb) {
-                        upBombs(true);
+                        Game.upBombs(true);
                     } else {
-                        upBombs(false);
+                        Game.upBombs(false);
                     }
                     flagUp = false;
                 } else {
                     slotButton.setBackgroundResource(R.drawable.flag);
                     //Если мина есть, уменьшаются оба счетчика, если нет, только счетчик фейков
                     if (haveBomb) {
-                        downBombs(true);
+                        Game.downBombs(true);
                     } else {
-                        downBombs(false);
+                        Game.downBombs(false);
                     }
                     flagUp = true;
                 }
@@ -118,7 +118,7 @@ public class Slot extends Game implements Parcelable {
             slotButton.setBackgroundResource(R.drawable.bomb);
         } else {
             //Уменьшаем счетчик закрытых ячеек
-            oneMoreOpen();
+            Game.oneMoreOpen();
             switch (count) {
                 //Если рядом нет мин, открывются соседние клетки
                 case 0: {
@@ -127,13 +127,13 @@ public class Slot extends Game implements Parcelable {
                     if (flagUp) {
                         //Если мина есть, увеличиваются оба счетчика, если нет, только счетчик фейков
                         if (haveBomb) {
-                            upBombs(true);
+                            Game.upBombs(true);
                         } else {
-                            upBombs(false);
+                            Game.upBombs(false);
                         }
                         flagUp = false;
                     }
-                    openNear(slotButton.getId());
+                    Game.openNear(slotButton.getId());
                     break;
                 }
                 case 1: {
