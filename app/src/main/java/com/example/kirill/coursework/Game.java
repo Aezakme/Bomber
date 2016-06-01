@@ -1,4 +1,4 @@
-Ipackage com.example.kirill.coursework;
+package com.example.kirill.coursework;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -54,7 +54,7 @@ public class Game extends AppCompatActivity {
     static Vibrator vibrator;
 
     //Кол-во мин
-    private static int NUMBER_OF_BOMBS;
+    private int NUMBER_OF_BOMBS;
     //Высота и ширина поля (одинаковы, но сделаны раздельно - возможно потом пригодится)
     private static int FIELD_ROWS;
     private static int FIELD_COLUMNS;
@@ -153,7 +153,6 @@ public class Game extends AppCompatActivity {
 
         //Список слотов поля
         outState.putParcelableArrayList("slotArray", slotArray);
-
         //Счетчик закрытых слотов
         outState.putInt("closeCounter", closeCounter);
         //Количество бомб, которые определил пользователь
@@ -162,7 +161,6 @@ public class Game extends AppCompatActivity {
         outState.putInt("goodBombs", goodBombs);
         //Состояние кнопки со смайлом (0 - норма, 1 - win, 2 - dead) Простите за костыль:(
         outState.putByte("stateOfSmile", stateOfSmile);
-
         //Кол-во мин
         outState.putInt("NUMBER_OF_BOMBS", NUMBER_OF_BOMBS);
         //Высота и ширина поля (одинаковы, но сделаны раздельно - возможно потом пригодится)
@@ -177,11 +175,8 @@ public class Game extends AppCompatActivity {
 
         //Список бомб
         bombsArray = savedInstanceState.getIntegerArrayList("bombsArray");
-
         //Список слотов поля
         slotArray = savedInstanceState.getParcelableArrayList("slotArray");
-
-
         //Счетчик закрытых слотов
         closeCounter = savedInstanceState.getInt("closeCounter");
         //Количество бомб, которые определил пользователь
@@ -190,7 +185,6 @@ public class Game extends AppCompatActivity {
         goodBombs = savedInstanceState.getInt("goodBombs");
         //Состояние кнопки со смайлом (0 - норма, 1 - win, 2 - dead) Простите за костыль:(
         stateOfSmile = savedInstanceState.getByte("stateOfSmile");
-
         //Кол-во мин
         NUMBER_OF_BOMBS = savedInstanceState.getInt("NUMBER_OF_BOMBS");
         //Высота и ширина поля (одинаковы, но сделаны раздельно - возможно потом пригодится)

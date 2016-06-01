@@ -10,11 +10,11 @@ import android.widget.ImageView;
 class BombCounter {
 
     //Разряд сотен
-    private static ImageView first;
+    private final ImageView first;
     //Разряд десятков
-    private static ImageView second;
+    private final ImageView second;
     //Разряд единиц
-    private static ImageView third;
+    private final ImageView third;
 
     public BombCounter(int Bombs, Activity activity) {
 

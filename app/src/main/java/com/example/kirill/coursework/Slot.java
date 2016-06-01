@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class Slot implements Parcelable {
 
     //Кнопка слота
-    transient ImageButton slotButton;
+    ImageButton slotButton;
     //ID слота
     int id;
     //Количество мин вокруг
