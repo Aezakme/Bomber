@@ -12,7 +12,7 @@ import android.view.View;
  * Из названий понятно, что куда идет
  */
 
-public class MainActivity extends AppCompatActivity {
+class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @SuppressWarnings({"unused", "UnusedParameters"})
     public void onStartClick(View view) {
         startActivity(new Intent(getApplicationContext(), Game.class));
     }

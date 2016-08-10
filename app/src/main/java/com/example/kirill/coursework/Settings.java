@@ -11,7 +11,7 @@ import android.widget.Switch;
  * Activity настроек. На нем находятся два слайдера кол-во клеток и мин
  */
 
-public class Settings extends AppCompatActivity {
+class Settings extends AppCompatActivity {
 
     //Размер поля
     private static int size = 5;
@@ -19,9 +19,6 @@ public class Settings extends AppCompatActivity {
     private static int numberOfBombs = 5;
     //Автоповорот экрана
     private static boolean isUgly = false;
-
-    //Слайдер для изменение размера поля
-    private NumberPicker bombNum = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +28,9 @@ public class Settings extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Инициализация слайдеров
-        NumberPicker fieldsSize = (NumberPicker) findViewById(R.id.numberPicker1);
-        bombNum = (NumberPicker) findViewById(R.id.numberPicker2);
+        final NumberPicker fieldsSize = (NumberPicker) findViewById(R.id.numberPicker1);
+        final NumberPicker bombNum = (NumberPicker) findViewById(R.id.numberPicker2);
+
         Switch switcher = (Switch) findViewById(R.id.switch1);
 
         //Кол-во клеток фиксирована (от 5 до 10) иначе кнопки слишком маленькие

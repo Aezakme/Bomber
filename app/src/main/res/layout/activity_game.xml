@@ -159,7 +159,23 @@
             android:layout_alignBottom="@+id/smile"
             android:layout_toStartOf="@+id/smile"
             android:layout_toLeftOf="@+id/smile"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:layout_marginRight="2dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView4"
+            android:src="@drawable/back_table"
+            android:scaleType="fitXY"
+            android:layout_alignTop="@+id/smile"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/smile"
+            android:layout_toRightOf="@+id/smile"
+            android:layout_toEndOf="@+id/smile"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="2dp" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -172,7 +188,8 @@
             android:layout_toStartOf="@+id/table"
             android:layout_alignRight="@+id/table"
             android:layout_alignEnd="@+id/table"
-            android:layout_margin="7dp">
+            android:layout_margin="7dp"
+            android:id="@+id/counter">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -192,6 +209,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/third"
+                android:src="@drawable/zero_table"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/timer"
+            android:layout_alignTop="@+id/counter"
+            android:layout_alignRight="@+id/imageView4"
+            android:layout_alignEnd="@+id/imageView4"
+            android:layout_alignBottom="@+id/counter"
+            android:layout_alignLeft="@+id/imageView4"
+            android:layout_alignStart="@+id/imageView4"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/first_t"
+                android:src="@drawable/zero_table"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/second_t"
+                android:src="@drawable/zero_table"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/third_t"
                 android:src="@drawable/zero_table"
                 android:layout_weight="1" />
         </LinearLayout>

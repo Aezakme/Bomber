@@ -10,7 +10,7 @@ import android.widget.ImageButton;
  * Activity с инфой обо мне и проекте, так же тут спряталсь пасхалочка
  */
 
-public class About extends AppCompatActivity {
+class About extends AppCompatActivity {
 
     //Кол-во нажатий на кнопку
     private int count;

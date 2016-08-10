@@ -3,6 +3,7 @@ package com.example.kirill.coursework;
 import android.app.Activity;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -13,7 +14,7 @@ import android.widget.Toast;
  * Класс слота с миной
  */
 @SuppressWarnings("ALL")
-public class Slot implements Parcelable {
+class Slot implements Parcelable {
 
     //Кнопка слота
     ImageButton slotButton;
@@ -61,19 +62,30 @@ public class Slot implements Parcelable {
                 if (!flagUp) {
                     //Если есть мина - взрыв!
                     if (haveBomb) {
-
-
                         //Напоминание, какоой игрок неудачник
                         Toast.makeText(activity, "Booom!You lose!", Toast.LENGTH_SHORT).show();
                         //Вибрация
                         Game.vibrator.vibrate(500);
                         //Подрыв всех мин
-                        Game.boomAll();
+                        Game.engine.boomAll();
                     } else {
                         //открытие клетки
                         open();
                     }
                 }
+            }
+        });
+
+        slotButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                ImageButton button = (ImageButton) activity.findViewById(R.id.smile);
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    button.setBackgroundResource(R.drawable.wow);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    button.setBackgroundResource(R.drawable.smile);
+                }
+                return false;
             }
         });
 
@@ -86,18 +98,18 @@ public class Slot implements Parcelable {
                     slotButton.setBackgroundResource(R.drawable.slot);
                     //Если мина есть, увеличиваются оба счетчика, если нет, только счетчик фейков
                     if (haveBomb) {
-                        Game.upBombs(true);
+                        Game.engine.upBombs(true);
                     } else {
-                        Game.upBombs(false);
+                        Game.engine.upBombs(false);
                     }
                     flagUp = false;
                 } else {
                     slotButton.setBackgroundResource(R.drawable.flag);
                     //Если мина есть, уменьшаются оба счетчика, если нет, только счетчик фейков
                     if (haveBomb) {
-                        Game.downBombs(true);
+                        Game.engine.downBombs(true);
                     } else {
-                        Game.downBombs(false);
+                        Game.engine.downBombs(false);
                     }
                     flagUp = true;
                 }
@@ -110,7 +122,6 @@ public class Slot implements Parcelable {
     //Метод открытия слота
     void open() {
 
-
         //Слот открыт
         showed = true;
         //Если в слоте бомба - она показыватся,  иначе устнавливается картинка в соответсвии со счетчиком мин
@@ -118,7 +129,7 @@ public class Slot implements Parcelable {
             slotButton.setBackgroundResource(R.drawable.bomb);
         } else {
             //Уменьшаем счетчик закрытых ячеек
-            Game.oneMoreOpen();
+            Game.engine.oneMoreOpen();
             switch (count) {
                 //Если рядом нет мин, открывются соседние клетки
                 case 0: {
@@ -127,13 +138,13 @@ public class Slot implements Parcelable {
                     if (flagUp) {
                         //Если мина есть, увеличиваются оба счетчика, если нет, только счетчик фейков
                         if (haveBomb) {
-                            Game.upBombs(true);
+                            Game.engine.upBombs(true);
                         } else {
-                            Game.upBombs(false);
+                            Game.engine.upBombs(false);
                         }
                         flagUp = false;
                     }
-                    Game.openNear(slotButton.getId());
+                    Game.engine.openNear(slotButton.getId());
                     break;
                 }
                 case 1: {
